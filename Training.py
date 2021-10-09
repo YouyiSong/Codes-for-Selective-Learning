@@ -150,7 +150,7 @@ for epoch in range(epoch_num):
             with torch.no_grad():
                 outputs = Net(images)
             _, segIdx = torch.max(outputs, dim=1)
-            for ii in range(2):
+            for ii in range(class_num):
                 outputs[:, ii] = torch.where(segIdx == ii, torch.ones_like(segIdx), torch.zeros_like(segIdx))
             tempDSC = DSC(outputs, targets)
             Res.append(tempDSC)
