@@ -8,7 +8,7 @@ class DiceLoss(nn.Module):
     def forward(self, output, target):
         Dice = DSC()
         classNum = target.size(1)
-        loss = Dice(output[:, 1], target[:, 1])
+        loss = 0
         for ii in range(classNum):
             loss += Dice(output[:, ii], target[:, ii])
         return loss
